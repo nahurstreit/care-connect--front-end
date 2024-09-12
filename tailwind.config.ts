@@ -11,6 +11,8 @@ const config: Config = {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        navbarBgColor: 'rgba(242, 240, 240, 1)',
+        navbarSelectedColor: 'rgba(239, 83, 86, 1)'
       },
     },
   },
