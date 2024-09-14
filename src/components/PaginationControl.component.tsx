@@ -12,7 +12,8 @@ export default function PaginationControl({ maxPage, currentPage, dotSize=10 }: 
         return (
           <div
             key={index}
-            className={`w-[${dotSize}px] h-[${dotSize}px] rounded-full ${isActive ? 'bg-[rgba(197,196,99,1)]' : 'bg-[rgba(242,240,240,1)] border border-[rgba(57,63,70,1)]'}`}
+            className={`rounded-full ${isActive ? 'bg-[rgba(197,196,99,1)]' : 'bg-[rgba(242,240,240,1)] border border-[rgba(57,63,70,1)]'}`}
+            style={{ width: `${dotSize}px`, height: `${dotSize}px` }}
           />
         )
       })}

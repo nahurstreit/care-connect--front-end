@@ -2,7 +2,7 @@
 import { useEffect, useRef, useState } from "react"
 import SectionTitle from "../SectionTitle.component"
 import ItemCarousel from "./ItemCarousel.component"
-import PaginationControl from "./PaginationControl.component"
+import PaginationControl from "../PaginationControl.component"
 
 interface CarouselProps {
     mainTitle: string
