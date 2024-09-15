@@ -19,9 +19,10 @@ export default function SplashScreen() {
 				height: '100vh',
 				padding: '16px',
 				boxSizing: 'border-box',
+				overflow: 'hiden',
 			}}
 		>
-			<div className='flex items-center justify-center h-full pb-5'>
+			<div className='flex items-center justify-center h-full'>
 				<div className='flex flex-col justify-left items-start px-3 gap-2'>
 					<img src={`logo-careconnect.svg`} className='w-full' />
 					<span style={{ fontSize: '24px', fontWeight: '400', color: 'rgba(239, 83, 86, 1)', padding: '0px 16px'}}>{`Conectando você ao seu bem-estar`}</span>

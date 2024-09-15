@@ -7,15 +7,17 @@ const poppins = Poppins({
 interface TextSectionProps {
     header?: TextProps
     body?: TextProps
+    bodyHtml?: JSX.Element
 }
 
 interface TextProps {
     text: string
     textAlign?: 'left' | 'right' | 'center' | 'justify'
     fontSize?: number
+    lineHeight?: number
 }
 
-export default function TextSection({header, body}: TextSectionProps) {
+export default function TextSection({header, body, bodyHtml}: TextSectionProps) {
     return (
         <div>
             {header && (
@@ -31,15 +33,22 @@ export default function TextSection({header, body}: TextSectionProps) {
                 </h1>
             )}
             {body && (
-                <p
-                    className={`${poppins.className} ${body.fontSize ?? ''}`}
-                    style={{
-                        color: `rgba(57, 63, 70, 1)`, 
-                        textAlign: body.textAlign, 
-                        fontSize: body.fontSize ? `${body.fontSize}px` : '14px'}}
-                >
-                    {body.text}
-                </p>
+                 <p
+                 className={`${poppins.className}`}
+                 style={{
+                     color: 'rgba(57, 63, 70, 1)',
+                     textAlign: body.textAlign,
+                     fontSize: body.fontSize ? `${body.fontSize}px` : '14px',
+                     lineHeight: body.lineHeight ? `${body.lineHeight}px` : '21px',
+                 }}
+             >
+                 {body.text}
+             </p>
+            )}
+            {bodyHtml && (
+                <>
+                    {bodyHtml}
+                </>
             )}
         </div>
     )

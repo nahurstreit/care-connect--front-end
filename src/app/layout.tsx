@@ -20,7 +20,7 @@ export default function WithUIRootLayout({
 }>) {
 	return (
 		<html lang="pt-br">
-            <body className={`${poppins.className} antialiased`}>
+            <body className={`${poppins.className} antialiased bg-white`}>
             {children}
             </body>
 		</html>
