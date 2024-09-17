@@ -41,7 +41,7 @@ export default function IconNavBar({href, iconName, hoverText, customBorderColor
             <img 
                 src={`/icons/navbar/${iconName}.svg`} 
                 alt={hoverText}
-                className="h-6 w-6"
+                style={{width: '24px', height: '24px'}}
             />
         </a>
     )

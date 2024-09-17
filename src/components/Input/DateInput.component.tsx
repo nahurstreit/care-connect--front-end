@@ -23,7 +23,7 @@ export default function DateInput({ label, selectedDate, required, onDateChange 
             <DatePicker
                 selected={selectedDate}
                 onChange={handleDateChange}
-                placeholderText='00/00/00000'
+                placeholderText='dia/mês/ano'
                 customInput={
                     <CustomInput 
                         value={selectedDate ? selectedDate.toLocaleDateString('pt-BR') : ''} 

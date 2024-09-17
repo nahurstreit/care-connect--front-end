@@ -1,6 +1,6 @@
 import TextSection from '@/components/TextSection/TextSection.component'
 import SectionTitle from '@/components/SectionTitle.component'
-import TrailDisplay from '@/components/Trails/TrailDisplay.component'
+import DisplayTrail from '@/components/Trails/DisplayTrail.section.component'
 import Carousel from '@/components/Carousel/Carousel.component'
 
 export default function Home() {
@@ -17,7 +17,7 @@ export default function Home() {
             <Carousel mainTitle='Novidades!'/>
             <div className='grid gap-2'>
                 <SectionTitle mainTitle='Trilhas'/>
-                <TrailDisplay />
+                <DisplayTrail />
             </div>
         </div>
     </main>

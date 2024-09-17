@@ -1,10 +1,10 @@
 import ItemTrail from './ItemTrail.component'
 
-interface TrailDisplayProps {
+interface DisplayTrailProps {
     trailLimit?: number
 }
 
-export default function TrailDisplay({trailLimit=10}: TrailDisplayProps) {
+export default function DisplayTrail({trailLimit=10}: DisplayTrailProps) {
     const items = Array.from({ length: trailLimit})
     return (
         <div className='flex flex-wrap gap-4 justify-center'>

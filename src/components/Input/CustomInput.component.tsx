@@ -1,3 +1,4 @@
+'use client'
 import React, { useState } from 'react'
 import ReactInputMask from 'react-input-mask'
 
@@ -5,27 +6,51 @@ interface CustomInputProps {
     label: string
     value: string
     onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
+    type?: 'text' | 'number' | 'button' | 'checkbox' | 'radio' | 'password' | 'email' | 'date' | 'url' | 'tel' | 'search' | 'file' | 'hidden' | 'submit' | 'reset' | 'image';
     placeholder?: string
     mask?: string
     icon?: string
-    iconClick?: () => void
     required?: boolean
+    errorLabel?: string
+    isPassword?: boolean
+    isAutoComplete?: boolean
+    iconClick?: () => void
 }
 
 export default function CustomInput({
     label,
     value,
     onChange,
+    type='text',
     placeholder,
     mask,
     icon,
     required,
+    errorLabel,
+    isPassword=false,
+    isAutoComplete=false,
     iconClick = () => {}
 }: CustomInputProps) {
-    const [isFocused, setIsFocused] = useState<boolean>(false);
+    const [isFocused, setIsFocused] = useState<boolean>(false)
+    const [showPassword, setShowPassword] = useState<boolean>(false)
+    const autoComplete = isAutoComplete? 'on' : 'off'
+
+    const compName = label.toLowerCase()
+                    .normalize('NFD')
+                    .replace(/[\u0300-\u036f]/g, '')
+                    .replace(/[^a-z0-9\s]/g, '')
+                    .trim()
+                    .replace(/\s+/g, '_')
+
+    const handlePasswordIconClick = () => {
+        setShowPassword(!showPassword)
+    }
+
+    
+    if(type == 'email') type = 'text'
 
     return (
-        <div className="flex flex-col w-full">
+        <div className="flex flex-col w-full" style={{gap: '4px'}}>
             <label
                 className="mb-1"
                 style={{
@@ -50,7 +75,7 @@ export default function CustomInput({
                 {mask ? (
                     <ReactInputMask 
                         mask={mask}
-                        type="text"
+                        type={`${type}`}
                         value={value}
                         onChange={onChange}
                         placeholder={placeholder}
@@ -63,12 +88,13 @@ export default function CustomInput({
                         onFocus={() => setIsFocused(true)}
                         onBlur={() => setIsFocused(false)}
                         required={required}
+                        id={`${compName}`}
+                        name={`${compName}`}
                     />
                 ) : (
                     <input
-                        type="text"
+                        type={!isPassword? `${type}` : showPassword? `${type}`: 'password'}
                         value={value}
-                        onChange={onChange}
                         placeholder={placeholder}
                         className="w-full focus:outline-none text-black"
                         style={{
@@ -76,17 +102,34 @@ export default function CustomInput({
                             fontSize: '16px',
                             lineHeight: '19px',
                         }}
+                        required={required}
+                        autoComplete={autoComplete}
+                        onChange={onChange}
                         onFocus={() => setIsFocused(true)}
                         onBlur={() => setIsFocused(false)}
-                        required={required}
+                        id={`${compName}`}
+                        name={`${compName}`}
                     />
                 )}
-                {icon && (
-                    <button style={{width: '24px', height: '24px'}} onClick={iconClick}>
-                        <img src='icons/calendar.svg' alt='icon' />
+                {(icon || isPassword) && (
+                    <button style={{width: '24px', height: '24px'}} type='button' onClick={isPassword? handlePasswordIconClick : iconClick}>
+                        <img src={`${isPassword? (`/icons/password-${showPassword ? 'on' : 'off'}.svg`) : icon}`} alt='icon' />
                     </button>
                 )}
             </div>
+            <label
+                className="mb-1"
+                style={{
+                    fontSize: '12px',
+                    lineHeight: '16px',
+                    fontWeight: 400,
+                    color: 'rgba(57, 63, 70, 1)',
+                    marginBottom: '4px',
+                    paddingLeft: '12px',
+                }}
+            >
+                {errorLabel}
+            </label>
         </div>
     )
 }
