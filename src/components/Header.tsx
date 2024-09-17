@@ -25,11 +25,14 @@ const Header: React.FC = () => {
 			className={`fixed top-0 w-full transition-all duration-300 z-50 ${isScrolled ? 'bg-white py-3 px-2 shadow-md' : 'bg-white py-4 px-2'
 				}`}
 		>
-			<img
-				src='/logo-careconnect.svg'
-				alt='Care Connect'
-				className='h-12 w-auto'
-			/>
+			<a href='/'>
+				<img
+					src='/logo-careconnect.svg'
+					alt='Care Connect'
+					className='h-12 w-auto'
+				/>
+			</a>
+			
 		</header>
 	)
 }

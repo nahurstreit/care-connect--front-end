@@ -53,7 +53,7 @@ export default function PageCarousel({ children }: CarouselProps) {
           {child}
         </div>
       ))}
-      <div className='flex items-center justify-center fixed bottom-0 left-0 right-0 py-8 px-4 bg-white'>
+      <div className='flex items-center justify-center fixed bottom-0 left-0 right-0 pt-8 pb-12 px-4 bg-white'>
         <PaginationControl maxPage={children.length} currentPage={currentPage} dotSize={16} />
       </div>
     </div>
